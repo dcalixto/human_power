@@ -1,5 +1,6 @@
 module HumanPower
   module Rails
+    ::Rails.application.config.after_initialize do
     class RobotsController < ::ApplicationController
       def robots
         generator = HumanPower::Generator.new(self) do
@@ -9,6 +10,7 @@ module HumanPower
 
         render plain: generator.render
       end
+    end
     end
   end
 end
